@@ -101,10 +101,28 @@ namespace TimeManager
             }
         }
 
-
+        
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            dGTaskView.Rows.Add(txtTask.Text, txtDescription.Text, numPriority.Value.ToString(), txtPlace.Text);
+            if (string.IsNullOrEmpty(txtTask.Text) || string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtPlace.Text))
+            {
+                // show a message box that the textboxes are empty
+                MessageBox.Show("Please fill all the fields before adding a new task");
+                return;
+            }
+            string task = txtTask.Text;
+            string description = txtDescription.Text;
+            int priority = (int)numPriority.Value;
+            string place = txtPlace.Text;
+
+
+            TimeManager newTask = new TimeManager(task, description, priority.ToString());
+
+            dGTaskView.Rows.Add(newTask.Task, newTask.Description, newTask.Priority);
+            txtTask.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+            txtPlace.Text = string.Empty;
+            numPriority.Value = 0;
         }
 
         private void btnEditTask_Click(object sender, EventArgs e)
