@@ -27,16 +27,24 @@ namespace TimeManager
 
         private void TimeManager_Load(object sender, EventArgs e)
         {
+            //pre made tasks
+            Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15-01-2023", TaskType.Homework);
+            Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19-01-2023", TaskType.Workout);
+            Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29-01-2023", TaskType.Doctor);
+            Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05-12-2023", TaskType.Hobby);
+
+
+
             var people = new List<Person>();
-            people.Add(new Person() { PersonID = 1, Name = "Josh", Lastname = "Frank" });
-            people.Add(new Person() { PersonID = 2, Name = "George", Lastname = "Julius" });
-            people.Add(new Person() { PersonID = 3, Name = "Bob", Lastname = "Jackson" });
+            people.Add(new Person(1, "Josh", "Frank", new BindingList<Task> { Wiskunde, Sporten }));
+            people.Add(new Person(2, "George", "Julius", new BindingList<Task> { Dokter, Wiskunde }));
+            people.Add(new Person(3, "Bob", "Jackson", new BindingList<Task> { Knutselen }));
+
 
             //link data to dropdown menu
             cBoxPeople.DataSource = people;
             cBoxPeople.DisplayMember = "Fullname";
             cBoxPeople.ValueMember = "PersonID";
-
         }
 
 
@@ -55,6 +63,8 @@ namespace TimeManager
 
             dGTaskView.Rows.Add(newTask.TaskName, newTask.Description, newTask.Priority, newTask.Place, newTask.Deadline, (TaskType)cBoxTaskType.SelectedItem);
 
+
+            //clear fields
             txtTaskName.Text = string.Empty;
             txtDescription.Text = string.Empty;
             numPriority.Text = string.Empty;
@@ -67,6 +77,7 @@ namespace TimeManager
 
         private void btnEditTask_Click(object sender, EventArgs e)
         {
+            //edit selected task
             if (dGTaskView.CurrentRow != null)
             {
                 dGTaskView.CurrentRow.Cells["Name"].Value = txtTaskName.Text;
@@ -78,6 +89,7 @@ namespace TimeManager
 
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
+            //clear selected row
             if (dGTaskView.CurrentRow != null)
             {
                 dGTaskView.Rows.RemoveAt(dGTaskView.CurrentRow.Index);
@@ -87,6 +99,18 @@ namespace TimeManager
         private void txtDeadline_Click(object sender, EventArgs e)
         {
             txtDeadline.Text = string.Empty;
+        }
+
+        private void cBoxPeople_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dGTaskView.Rows.Clear();
+            Person p = (Person)cBoxPeople.SelectedItem; //casting
+            foreach (Task t in p.assignedTasks) 
+            {
+                dGTaskView.Rows.Add(t.TaskName, t.Description, t.Priority, t.Place, t.Deadline, t.tType.ToString());
+            }
+            //loop through individual properties for the Task
+
         }
     }
 }

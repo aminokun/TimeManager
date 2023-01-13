@@ -12,16 +12,17 @@ namespace TimeManager
         public string TaskName { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }
-        public string Place { get; private set; }
+        public string Place { get; set; }
         public string Deadline { get; set; }
-        private TaskType tType { get; set; }
+        public TaskType tType { get; set; }
 
         public enum TaskType
         {
             Homework,
             Workout,
             Work,
-            Hobby
+            Hobby,
+            Doctor
         }
 
         public Task(string _taskname, string _description, string _priority, string _place, string _deadline, TaskType _ttype)
@@ -34,11 +35,11 @@ namespace TimeManager
             this.tType = _ttype;
         }
 
-        public override string ToString()
-        {
-            return "Priority level:" + this.Priority ;
-            //return "";
-        }
+        //public override string ToString()
+        //{
+        //    return "Priority level:" + this.Priority ;
+        //    //return "";
+        //}
     }
 
 

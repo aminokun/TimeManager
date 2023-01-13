@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblToDo = new System.Windows.Forms.Label();
             this.lblTaskName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -43,18 +43,18 @@
             this.btnEditTask = new System.Windows.Forms.Button();
             this.btnRemoveTask = new System.Windows.Forms.Button();
             this.dGTaskView = new System.Windows.Forms.DataGridView();
-            this.numPriority = new System.Windows.Forms.NumericUpDown();
-            this.txtDeadline = new System.Windows.Forms.TextBox();
-            this.lblDeadline = new System.Windows.Forms.Label();
-            this.cBoxPeople = new System.Windows.Forms.ComboBox();
-            this.cBoxTaskType = new System.Windows.Forms.ComboBox();
-            this.lblType = new System.Windows.Forms.Label();
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Priority = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Place = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numPriority = new System.Windows.Forms.NumericUpDown();
+            this.txtDeadline = new System.Windows.Forms.TextBox();
+            this.lblDeadline = new System.Windows.Forms.Label();
+            this.cBoxPeople = new System.Windows.Forms.ComboBox();
+            this.cBoxTaskType = new System.Windows.Forms.ComboBox();
+            this.lblType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGTaskView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.SuspendLayout();
@@ -194,18 +194,18 @@
             // 
             this.dGTaskView.AllowUserToAddRows = false;
             this.dGTaskView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.dGTaskView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.dGTaskView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dGTaskView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGTaskView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGTaskView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dGTaskView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGTaskView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Task,
@@ -214,94 +214,23 @@
             this.Place,
             this.Deadline,
             this.Type});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGTaskView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(69)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGTaskView.DefaultCellStyle = dataGridViewCellStyle6;
             this.dGTaskView.Dock = System.Windows.Forms.DockStyle.Right;
             this.dGTaskView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
-            this.dGTaskView.Location = new System.Drawing.Point(464, 0);
+            this.dGTaskView.Location = new System.Drawing.Point(467, 0);
             this.dGTaskView.Margin = new System.Windows.Forms.Padding(4);
             this.dGTaskView.Name = "dGTaskView";
             this.dGTaskView.ReadOnly = true;
             this.dGTaskView.RowHeadersWidth = 51;
-            this.dGTaskView.Size = new System.Drawing.Size(914, 676);
+            this.dGTaskView.Size = new System.Drawing.Size(1100, 676);
             this.dGTaskView.TabIndex = 13;
-            // 
-            // numPriority
-            // 
-            this.numPriority.Location = new System.Drawing.Point(208, 257);
-            this.numPriority.Margin = new System.Windows.Forms.Padding(4);
-            this.numPriority.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numPriority.Name = "numPriority";
-            this.numPriority.Size = new System.Drawing.Size(227, 22);
-            this.numPriority.TabIndex = 14;
-            // 
-            // txtDeadline
-            // 
-            this.txtDeadline.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtDeadline.Location = new System.Drawing.Point(210, 364);
-            this.txtDeadline.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeadline.Name = "txtDeadline";
-            this.txtDeadline.Size = new System.Drawing.Size(225, 22);
-            this.txtDeadline.TabIndex = 16;
-            this.txtDeadline.Text = "dd-mm-yyyy";
-            this.txtDeadline.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDeadline.Click += new System.EventHandler(this.txtDeadline_Click);
-            // 
-            // lblDeadline
-            // 
-            this.lblDeadline.AutoSize = true;
-            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeadline.Location = new System.Drawing.Point(18, 358);
-            this.lblDeadline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDeadline.Name = "lblDeadline";
-            this.lblDeadline.Size = new System.Drawing.Size(125, 29);
-            this.lblDeadline.TabIndex = 15;
-            this.lblDeadline.Text = "Deadline:";
-            // 
-            // cBoxPeople
-            // 
-            this.cBoxPeople.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.cBoxPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxPeople.ForeColor = System.Drawing.Color.White;
-            this.cBoxPeople.FormattingEnabled = true;
-            this.cBoxPeople.Location = new System.Drawing.Point(23, 624);
-            this.cBoxPeople.Name = "cBoxPeople";
-            this.cBoxPeople.Size = new System.Drawing.Size(238, 28);
-            this.cBoxPeople.TabIndex = 17;
-            this.cBoxPeople.Text = "People";
-            // 
-            // cBoxTaskType
-            // 
-            this.cBoxTaskType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.cBoxTaskType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxTaskType.ForeColor = System.Drawing.Color.White;
-            this.cBoxTaskType.FormattingEnabled = true;
-            this.cBoxTaskType.Location = new System.Drawing.Point(208, 408);
-            this.cBoxTaskType.Name = "cBoxTaskType";
-            this.cBoxTaskType.Size = new System.Drawing.Size(227, 28);
-            this.cBoxTaskType.TabIndex = 18;
-            this.cBoxTaskType.Text = "Task Type";
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(18, 408);
-            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(79, 29);
-            this.lblType.TabIndex = 19;
-            this.lblType.Text = "Type:";
             // 
             // Task
             // 
@@ -351,12 +280,84 @@
             this.Type.ReadOnly = true;
             this.Type.Width = 125;
             // 
+            // numPriority
+            // 
+            this.numPriority.Location = new System.Drawing.Point(208, 257);
+            this.numPriority.Margin = new System.Windows.Forms.Padding(4);
+            this.numPriority.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numPriority.Name = "numPriority";
+            this.numPriority.Size = new System.Drawing.Size(227, 22);
+            this.numPriority.TabIndex = 14;
+            // 
+            // txtDeadline
+            // 
+            this.txtDeadline.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtDeadline.Location = new System.Drawing.Point(210, 364);
+            this.txtDeadline.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeadline.Name = "txtDeadline";
+            this.txtDeadline.Size = new System.Drawing.Size(225, 22);
+            this.txtDeadline.TabIndex = 16;
+            this.txtDeadline.Text = "dd-mm-yyyy";
+            this.txtDeadline.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDeadline.Click += new System.EventHandler(this.txtDeadline_Click);
+            // 
+            // lblDeadline
+            // 
+            this.lblDeadline.AutoSize = true;
+            this.lblDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeadline.Location = new System.Drawing.Point(18, 358);
+            this.lblDeadline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeadline.Name = "lblDeadline";
+            this.lblDeadline.Size = new System.Drawing.Size(125, 29);
+            this.lblDeadline.TabIndex = 15;
+            this.lblDeadline.Text = "Deadline:";
+            // 
+            // cBoxPeople
+            // 
+            this.cBoxPeople.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.cBoxPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxPeople.ForeColor = System.Drawing.Color.White;
+            this.cBoxPeople.FormattingEnabled = true;
+            this.cBoxPeople.Location = new System.Drawing.Point(23, 624);
+            this.cBoxPeople.Name = "cBoxPeople";
+            this.cBoxPeople.Size = new System.Drawing.Size(238, 28);
+            this.cBoxPeople.TabIndex = 17;
+            this.cBoxPeople.Text = "People";
+            this.cBoxPeople.SelectedIndexChanged += new System.EventHandler(this.cBoxPeople_SelectedIndexChanged);
+            // 
+            // cBoxTaskType
+            // 
+            this.cBoxTaskType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.cBoxTaskType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxTaskType.ForeColor = System.Drawing.Color.White;
+            this.cBoxTaskType.FormattingEnabled = true;
+            this.cBoxTaskType.Location = new System.Drawing.Point(208, 408);
+            this.cBoxTaskType.Name = "cBoxTaskType";
+            this.cBoxTaskType.Size = new System.Drawing.Size(227, 28);
+            this.cBoxTaskType.TabIndex = 18;
+            this.cBoxTaskType.Text = "Task Type";
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(18, 408);
+            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(79, 29);
+            this.lblType.TabIndex = 19;
+            this.lblType.Text = "Type:";
+            // 
             // TimeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(1378, 676);
+            this.ClientSize = new System.Drawing.Size(1567, 676);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.cBoxTaskType);
             this.Controls.Add(this.cBoxPeople);
