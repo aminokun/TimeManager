@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Person.cs" />
+    <Compile Include="Task.cs" />
     <Compile Include="TimeManager.cs">
       <SubType>Form</SubType>
     </Compile>
