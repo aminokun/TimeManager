@@ -46,7 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TaskDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskDetailsForm.Designer.cs">
+      <DependentUpon>TaskDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="Progress.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TimeManager.cs">
       <SubType>Form</SubType>
@@ -56,6 +63,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeSheet.cs" />
+    <EmbeddedResource Include="TaskDetailsForm.resx">
+      <DependentUpon>TaskDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimeManager.resx">
       <DependentUpon>TimeManager.cs</DependentUpon>
     </EmbeddedResource>
