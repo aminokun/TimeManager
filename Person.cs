@@ -9,7 +9,7 @@ namespace TimeManager
 {
     public class Person
     {
-        public int PersonID { get; /*private*/ set; }
+        public int PersonID { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
 
@@ -21,21 +21,18 @@ namespace TimeManager
             }
         }
 
-        public Person(int personID, string name, string lastname, BindingList<Task> assignedTasks)
+        public Person(int personID, string name, string lastname, List<Task> assignedTasks)
         {
             this.PersonID = personID;
             this.Name = name;
             this.Lastname = lastname;
             this.assignedTasks = assignedTasks;
         }
-        public Person(int personID, string name, string lastname) : this(personID, name, lastname, new BindingList<Task>()){ }
+        public Person(int personID, string name, string lastname) : this(personID, name, lastname, new List<Task>())
+        {
+
+        }
         
-          
-        
-
-        public BindingList<Task> assignedTasks = new BindingList<Task>();
-
-
-
+        public List<Task> assignedTasks = new List<Task>();
     }
 }
