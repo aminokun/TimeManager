@@ -7,22 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TimeManager
 {
     public partial class TaskDetailsForm : Form
     {
-        private Task task { get; }
-
-        public TaskDetailsForm(Task task)
+        public TaskDetailsForm()
         {
             InitializeComponent();
-            this.task = task;
-        }
-
-        private void TaskDetailsForm_Load(object sender, EventArgs e)
-        {
-            lblTaskName.Text = this.task.TaskName;
         }
     }
 }

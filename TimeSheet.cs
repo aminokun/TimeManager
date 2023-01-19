@@ -46,7 +46,6 @@ namespace TimeManager
         public void GenerateReport(DateTime startDate, DateTime endDate)
         {
             TimeSpan timeSpent = GetTimeSpentOnTask(startDate, endDate);
-            //Console.WriteLine("Time spent on task between {0} and {1}: {2}", startDate, endDate, timeSpent);
         }
     }
 

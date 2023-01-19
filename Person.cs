@@ -32,7 +32,16 @@ namespace TimeManager
         {
 
         }
-        
         public List<Task> assignedTasks = new List<Task>();
+
+        public static List<Person> CreatePeople()
+        {
+            var people = new List<Person>();
+            people.Add(new Person(1, "Josh", "Frank", Task.CreateTasks().Where(x=>x.TaskName == "Wiskunde" || x.TaskName == "Voetbal Training").ToList()));
+            people.Add(new Person(2, "George", "Julius", Task.CreateTasks().Where(x=>x.TaskName == "Bloed Controle" || x.TaskName == "Wiskunde" ).ToList()));
+            people.Add(new Person(3, "Bob", "Jackson", Task.CreateTasks().Where(x=>x.TaskName == "Sinterklaas Surprise" ).ToList()));
+            people.Add(new Person(4, "B", "Joe"));
+            return people;
+        }
     }
 }
