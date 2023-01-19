@@ -8,9 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using static TimeManager.Task;
+using System.Globalization;
 
 namespace TimeManager
 {
@@ -22,7 +24,6 @@ namespace TimeManager
 
             cBoxTaskType.DataSource = Enum.GetValues(typeof(TaskType));
             cBoxTaskType.SelectedIndex = 0;
-
         }
 
         public void TaskRefresher()
@@ -30,7 +31,7 @@ namespace TimeManager
             int priority = (int)numPriority.Value;
 
             Person p = (Person)cBoxPeople.SelectedItem; //casting
-            p.assignedTasks.Add(new Task(txtTaskName.Text, txtDescription.Text, priority.ToString(), txtPlace.Text, txtDeadline.Text, (TaskType)cBoxTaskType.SelectedItem));
+            p.assignedTasks.Add(new Task(txtTaskName.Text, txtDescription.Text, priority.ToString(), txtPlace.Text, dateTimeInput.Value.ToString("dd/MM/yyyy"), (TaskType)cBoxTaskType.SelectedItem));
             dGTaskView.Rows.Clear();
             foreach (Task t in p.assignedTasks)
             {
@@ -38,27 +39,47 @@ namespace TimeManager
             }
         }
 
-        private void TimeManager_Load(object sender, EventArgs e)
+        private List<Person> CreatePeople()
         {
-            //pre made tasks
-            Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15-01-2023", TaskType.Homework);
-            Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19-01-2023", TaskType.Workout);
-            Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29-01-2023", TaskType.Doctor);
-            Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05-12-2023", TaskType.Hobby);
-
+            Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework);
+            Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout);
+            Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29/02/2023", TaskType.Doctor);
+            Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby);
 
             var people = new List<Person>();
             people.Add(new Person(1, "Josh", "Frank", new List<Task> { Wiskunde, Sporten }));
             people.Add(new Person(2, "George", "Julius", new List<Task> { Dokter, Wiskunde }));
             people.Add(new Person(3, "Bob", "Jackson", new List<Task> { Knutselen }));
             people.Add(new Person(4, "B", "Joe"));
+            return people;
+        }
 
 
+        private void TimeManager_Load(object sender, EventArgs e)
+        {
 
-            //link data to dropdown menu
-            cBoxPeople.DataSource = people;
+            var people = Person.CreatePeople();
+            cBoxPeople.DataSource = Person.CreatePeople();
             cBoxPeople.DisplayMember = "Fullname";
             cBoxPeople.ValueMember = "PersonID";
+
+
+            ////pre made tasks
+            //Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework);
+            //Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout);
+            //Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29/02/2023", TaskType.Doctor);
+            //Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby);
+
+            //var people = new List<Person>();
+            //people.Add(new Person(1, "Josh", "Frank", new List<Task> { Wiskunde, Sporten }));
+            //people.Add(new Person(2, "George", "Julius", new List<Task> { Dokter, Wiskunde }));
+            //people.Add(new Person(3, "Bob", "Jackson", new List<Task> { Knutselen }));
+            //people.Add(new Person(4, "B", "Joe"));
+
+            ////link data to dropdown menu
+            //cBoxPeople.DataSource = people;
+            //cBoxPeople.DisplayMember = "Fullname";
+            //cBoxPeople.ValueMember = "PersonID";
         }
 
 
@@ -71,7 +92,6 @@ namespace TimeManager
                 return;
             }
 
-
             TaskRefresher();
 
             //clear fields
@@ -79,12 +99,30 @@ namespace TimeManager
             txtDescription.Text = string.Empty;
             numPriority.Text = string.Empty;
             txtPlace.Text = string.Empty;
-            txtDeadline.Text = string.Empty;
+            dateTimeInput.Value = DateTime.Now;
             numPriority.Value = 0;
 
            
         }
 
+
+        //Send DataGridView To TextBoxes To Edit
+        private void dGTaskView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dGTaskView.CurrentRow != null)
+            {
+                txtTaskName.Text = dGTaskView.CurrentRow.Cells["Task"].Value.ToString();
+                txtDescription.Text = dGTaskView.CurrentRow.Cells["Description"].Value.ToString();
+                numPriority.Value = Convert.ToDecimal(dGTaskView.CurrentRow.Cells["Priority"].Value);
+                txtPlace.Text = dGTaskView.CurrentRow.Cells["Place"].Value.ToString();
+                cBoxTaskType.Text = dGTaskView.CurrentRow.Cells["Type"].Value.ToString();
+                dateTimeInput.Value = Convert.ToDateTime(dGTaskView.CurrentRow.Cells["Deadline"].Value);
+            }
+        }
+
+
+
+        //Apply Edit To DataGridView
         private void btnEditTask_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtTaskName.Text) || string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrEmpty(txtPlace.Text))
@@ -100,8 +138,10 @@ namespace TimeManager
                 dGTaskView.CurrentRow.Cells["Description"].Value = txtDescription.Text;
                 dGTaskView.CurrentRow.Cells["Priority"].Value = numPriority.Value.ToString();
                 dGTaskView.CurrentRow.Cells["Place"].Value = txtPlace.Text;
+
             }
         }
+
 
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
@@ -112,10 +152,6 @@ namespace TimeManager
             }
         }
 
-        private void txtDeadline_Click(object sender, EventArgs e)
-        {
-            txtDeadline.Text = string.Empty;
-        }
 
         private void cBoxPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,23 +167,36 @@ namespace TimeManager
 
         private void dGTaskView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dGTaskView.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dGTaskView.SelectedRows[0];
-                Task selectedTask = (Task)selectedRow.DataBoundItem;
-                if (selectedTask != null)
-                {
-                    TaskDetailsForm taskDetailsForm = new TaskDetailsForm(selectedTask);
-                    taskDetailsForm.Show();
-                }
-                else
-                {
-                    // show a message box to inform the user that the selected task is null
-                    MessageBox.Show("The selected task is null, please make sure that the data grid view is properly bound to the data source and that the data source contains the tasks");
-                }
-            }
+            int TaskName = 0;
+            int Description = 1;
+            int Priority = 2;
+            int Place = 3;
+            int Deadline = 4;
 
+            TaskDetailsForm taskDetails = new TaskDetailsForm();
+            taskDetails.lblTaskNameDetails.Text = this.dGTaskView.CurrentRow.Cells[TaskName].Value.ToString();
+            taskDetails.rtxtDescriptionDetails.Text = this.dGTaskView.CurrentRow.Cells[Description].Value.ToString();
+            taskDetails.lblPriorityLevel.Text = this.dGTaskView.CurrentRow.Cells[Priority].Value.ToString();
+            taskDetails.rtxtPlaceDetails.Text = this.dGTaskView.CurrentRow.Cells[Place].Value.ToString();
+
+            // Get the date strings from the DataGridView cells
+            string startDateString = DateTime.Now.ToString("dd/MM/yyyy");
+            string endDateString = this.dGTaskView.CurrentRow.Cells[Deadline].Value.ToString();
+            
+            // Convert the date strings to DateTime objects
+            DateTime startDate = DateTime.ParseExact(startDateString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime endDate = DateTime.ParseExact(endDateString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            
+            // Set the start and end dates of the MonthCalendar control
+            taskDetails.mCalenderDetails.SelectionStart = startDate;
+            taskDetails.mCalenderDetails.SelectionEnd = endDate;
+
+            taskDetails.mCalenderDetails.MaxSelectionCount = 1;
+            taskDetails.mCalenderDetails.MaxDate = endDate;
+            taskDetails.ShowDialog();
         }
+
+
     }
 }
 
