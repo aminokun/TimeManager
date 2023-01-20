@@ -34,14 +34,16 @@ namespace TimeManager
         }
         public List<Task> assignedTasks = new List<Task>();
 
+
+        //Create list with premade persons, retrieve premade tasks from method CreateTasks() in class Task
         public static List<Person> CreatePeople()
         {
-            var people = new List<Person>();
-            people.Add(new Person(1, "Josh", "Frank", Task.CreateTasks().Where(x=>x.TaskName == "Wiskunde" || x.TaskName == "Voetbal Training").ToList()));
-            people.Add(new Person(2, "George", "Julius", Task.CreateTasks().Where(x=>x.TaskName == "Bloed Controle" || x.TaskName == "Wiskunde" ).ToList()));
-            people.Add(new Person(3, "Bob", "Jackson", Task.CreateTasks().Where(x=>x.TaskName == "Sinterklaas Surprise" ).ToList()));
-            people.Add(new Person(4, "B", "Joe"));
-            return people;
+            var peopleList = new List<Person>();
+            peopleList.Add(new Person(1, "Josh", "Frank", Task.CreateTasks().Where(x=>x.TaskName == "Wiskunde" || x.TaskName == "Voetbal Training").ToList()));
+            peopleList.Add(new Person(2, "George", "Julius", Task.CreateTasks().Where(x=>x.TaskName == "Bloed Controle" || x.TaskName == "Wiskunde" ).ToList()));
+            peopleList.Add(new Person(3, "Bob", "Jackson", Task.CreateTasks().Where(x=>x.TaskName == "Sinterklaas Surprise" ).ToList()));
+            peopleList.Add(new Person(4, "B", "Joe"));
+            return peopleList;
         }
     }
 }

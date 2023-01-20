@@ -18,12 +18,15 @@ namespace TimeManager
 {
     public partial class TimeManager : Form
     {
+        private TimeSheet timeSheet;
         public TimeManager()
         {
             InitializeComponent();
 
             cBoxTaskType.DataSource = Enum.GetValues(typeof(TaskType));
             cBoxTaskType.SelectedIndex = 0;
+
+            timeSheet = new TimeSheet(); // Initialize the timeSheet field
         }
 
         public void TaskRefresher()
@@ -31,7 +34,7 @@ namespace TimeManager
             int priority = (int)numPriority.Value;
 
             Person p = (Person)cBoxPeople.SelectedItem; //casting
-            p.assignedTasks.Add(new Task(txtTaskName.Text, txtDescription.Text, priority.ToString(), txtPlace.Text, dateTimeInput.Value.ToString("dd/MM/yyyy"), (TaskType)cBoxTaskType.SelectedItem));
+            p.assignedTasks.Add(new Task(txtTaskName.Text, txtDescription.Text, priority.ToString(), txtPlace.Text, dateTimeInput.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture), (TaskType)cBoxTaskType.SelectedItem));
             dGTaskView.Rows.Clear();
             foreach (Task t in p.assignedTasks)
             {
@@ -39,47 +42,15 @@ namespace TimeManager
             }
         }
 
-        private List<Person> CreatePeople()
-        {
-            Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework);
-            Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout);
-            Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29/02/2023", TaskType.Doctor);
-            Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby);
-
-            var people = new List<Person>();
-            people.Add(new Person(1, "Josh", "Frank", new List<Task> { Wiskunde, Sporten }));
-            people.Add(new Person(2, "George", "Julius", new List<Task> { Dokter, Wiskunde }));
-            people.Add(new Person(3, "Bob", "Jackson", new List<Task> { Knutselen }));
-            people.Add(new Person(4, "B", "Joe"));
-            return people;
-        }
-
-
         private void TimeManager_Load(object sender, EventArgs e)
         {
 
             var people = Person.CreatePeople();
+
+            ////link data to dropdown menu
             cBoxPeople.DataSource = Person.CreatePeople();
             cBoxPeople.DisplayMember = "Fullname";
             cBoxPeople.ValueMember = "PersonID";
-
-
-            ////pre made tasks
-            //Task Wiskunde = new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework);
-            //Task Sporten = new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout);
-            //Task Dokter = new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "29/02/2023", TaskType.Doctor);
-            //Task Knutselen = new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby);
-
-            //var people = new List<Person>();
-            //people.Add(new Person(1, "Josh", "Frank", new List<Task> { Wiskunde, Sporten }));
-            //people.Add(new Person(2, "George", "Julius", new List<Task> { Dokter, Wiskunde }));
-            //people.Add(new Person(3, "Bob", "Jackson", new List<Task> { Knutselen }));
-            //people.Add(new Person(4, "B", "Joe"));
-
-            ////link data to dropdown menu
-            //cBoxPeople.DataSource = people;
-            //cBoxPeople.DisplayMember = "Fullname";
-            //cBoxPeople.ValueMember = "PersonID";
         }
 
 
@@ -180,7 +151,7 @@ namespace TimeManager
             taskDetails.rtxtPlaceDetails.Text = this.dGTaskView.CurrentRow.Cells[Place].Value.ToString();
 
             // Get the date strings from the DataGridView cells
-            string startDateString = DateTime.Now.ToString("dd/MM/yyyy");
+            string startDateString = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             string endDateString = this.dGTaskView.CurrentRow.Cells[Deadline].Value.ToString();
             
             // Convert the date strings to DateTime objects
@@ -193,10 +164,11 @@ namespace TimeManager
 
             taskDetails.mCalenderDetails.MaxSelectionCount = 1;
             taskDetails.mCalenderDetails.MaxDate = endDate;
+
+            // Get the time spent on the task from the timeSheet object
+            taskDetails.lblTimeSpent.Text = timeSheet.GenerateReport(startDate, endDate);
             taskDetails.ShowDialog();
         }
-
-
     }
 }
 

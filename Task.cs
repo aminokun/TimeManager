@@ -15,6 +15,8 @@ namespace TimeManager
         public string Place { get; set; }
         public string Deadline { get; set; }
         public TaskType tType { get; }
+        public TimeSpan TimeSpent { get; set; }
+
 
         public enum TaskType
         {
@@ -37,12 +39,18 @@ namespace TimeManager
 
         public static List<Task> CreateTasks()
         {
-            var tasks = new List<Task>();
-            tasks.Add(new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework));
-            tasks.Add(new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout));
-            tasks.Add(new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "28/02/2023", TaskType.Doctor));
-            tasks.Add(new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby));
-            return tasks;
+            var taskList = new List<Task>();
+
+            taskList.Add(new Task("Wiskunde", "Opdracht 42, 43", "3", "Huiswerk Bijles", "15/02/2023", TaskType.Homework));
+            taskList.Add(new Task("Voetbal Training", "Om 19:00", "4", "Voetbalveld", "19/02/2023", TaskType.Workout));
+            taskList.Add(new Task("Bloed Controle", "Bloed prikken", "3", "Ziekenhuis", "28/02/2023", TaskType.Doctor));
+            taskList.Add(new Task("Sinterklaas Surprise", "voor neefje", "2", "Thuis", "05/02/2023", TaskType.Hobby));
+            return taskList;
+        }
+
+        public void UpdateTimeSpent(TimeSpan timeSpent)
+        {
+            this.TimeSpent += timeSpent;
         }
     }
 }
