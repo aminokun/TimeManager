@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,13 +41,13 @@ namespace TimeManager
             {
                 endDate = EndTime;
             }
-            return endDate - startDate;
+            return (endDate - startDate);
         }
 
         public void GenerateReport(DateTime startDate, DateTime endDate)
         {
             TimeSpan timeSpent = GetTimeSpentOnTask(startDate, endDate);
+            double totalMinutes = timeSpent.TotalMinutes;
         }
     }
-
 }
